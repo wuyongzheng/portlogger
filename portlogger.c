@@ -134,7 +134,7 @@ static void server_loop (void)
 		struct timeval timeout;
 		timeout.tv_sec = RECV_TIMEOUT;
 		timeout.tv_usec = 0;
-		int retval = select(maxfd + 1, &rfds, NULL, NULL, &timeout);
+		int retval = select(maxfd + 1, &rfds, NULL, NULL, client_num == 0 ? NULL : &timeout);
 
 		if (retval == -1) {
 			fprintf(logfp, "select() error\n");
