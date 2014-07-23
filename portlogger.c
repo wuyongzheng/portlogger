@@ -242,9 +242,13 @@ int main (int argc, char *argv[])
 		if (timestr != NULL && timestr[0] != 0)
 			timestr[strlen(timestr) - 1] = '\0';
 		fprintf(logfp, "%s\tListening to:", timestr);
-		for (i = 0; i < nssocket; i ++)
+		printf("Listening to:");
+		for (i = 0; i < nssocket; i ++) {
 			fprintf(logfp, " %d", listen_ports[i]);
+			printf(" %d", listen_ports[i]);
+		}
 		fprintf(logfp, "\n");
+		printf("\n");
 		fflush(logfp);
 	}
 
@@ -253,6 +257,7 @@ int main (int argc, char *argv[])
 	fclose(stderr);
 	chdir("/");
 	change_to_nobody();
+	printf("Forking to background\n");
 	if (fork() != 0) return 0;
 	server_loop();
 	return 0;
