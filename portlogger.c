@@ -241,7 +241,7 @@ int main (int argc, char *argv[])
 		char *timestr = ctime(&ts);
 		if (timestr != NULL && timestr[0] != 0)
 			timestr[strlen(timestr) - 1] = '\0';
-		fprintf(logfp, "%s\tListening to: ", timestr);
+		fprintf(logfp, "%s\tListening to:", timestr);
 		for (i = 0; i < nssocket; i ++)
 			fprintf(logfp, " %d", listen_ports[i]);
 		fprintf(logfp, "\n");
